@@ -1,0 +1,4 @@
+.config
+__pycache__
+.python_history
+*.png
