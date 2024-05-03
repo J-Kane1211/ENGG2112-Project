@@ -1,3 +1,3 @@
 # ENGG2112 project
 
-yes
+currently: run with `python runner.py <input data> <result graph>`
