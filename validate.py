@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 from sklearn.model_selection import StratifiedKFold
 from sklearn.preprocessing import OneHotEncoder
+import sklearn
 
 #calculatees the mean roc
 def validate_single_classifier(
@@ -25,25 +26,20 @@ def validate_single_classifier(
 
     mean_tpr = np.mean(tpr_all, axis=0)
 
+    try:
+        
+        fig, ax = plt.subplots()
+        fig.set_size_inches(20, 20)
+        sklearn.tree.plot_tree(classifier, ax=ax)
+        fig.savefig("tree.png")
+    except Exception as e:
+        #print(e)
+        pass
+
     return mean_fpr, mean_tpr
 
 
-def convert_features(df):
-    res = pd.DataFrame()
-    enc = OneHotEncoder(drop='first')
-    for label in df.columns:
-        if df[label].dtype not in ('string', 'category', 'object'):
-            res[label] = df[label] #normal add
-        else:
-            #use one hot encoding for categories and the like
-            #get k-1 labels
-            new = pd.DataFrame(enc.fit_transform(df[[label]]).toarray(), columns = enc.get_feature_names_out([label]))
-            res = pd.concat([
-                res,
-                new],
-                axis=1
-            )
-    return res
+
 
 if __name__ == "__main__":
     pass
