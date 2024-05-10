@@ -17,23 +17,23 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.utils.class_weight import compute_sample_weight
 
 filename = "Dataset_2.csv"
-df = pd.read_csv(filename)
+df = pd.read_csv(filename, sep=";")
 
 
 predict = df["cardio"]
-featureset_1 = df[["age", "gender", "height", "weight", "ap_hi", "ap_lo"]]
-featureset_2 = df[["cholesterol", "gluc", "smoke", "alco" "active", "Sex"]]
+DLSR = df[["age", "gender", "height", "weight", "smoke", "alco", "active"]]
+GPMC2 = df[["cholesterol", "gluc", "smoke", "alco", "ap_hi", "ap_lo", "age", "gender", "height", "weight", "active"]]
 
-featureset_1 = preprocess.convert_features(featureset_1)
-featureset_2 = preprocess.convert_features(featureset_2)
+DLSR = preprocess.convert_features(DLSR)
+GPMC2 = preprocess.convert_features(GPMC2)
 
 features = [
-    featureset_1,
-    featureset_2
+    DLSR,
+    GPMC2
 ]
-feature_names = ["Featureset1", "Featureset2"]
+feature_names = ["DLSR", "GPMC2"]
 
-fig, axs = plt.subplots(1, 3, sharex=True, sharey=True) #one for each feature set
+fig, axs = plt.subplots(1, 2, sharex=True, sharey=True) #one for each feature set
 for idx, ax in enumerate(axs):
     wnn = KNeighborsClassifier(weights='distance')
     reg = LogisticRegression(max_iter=100000)
@@ -51,10 +51,6 @@ for idx, ax in enumerate(axs):
 
     wnn_fpr, wnn_tpr, wnn_auc = modeller.model(features[idx], predict, wnn)
     ax.plot(wnn_fpr, wnn_tpr, label="wnn AUC: {0:.2f}".format(wnn_auc))
-
-
-    reg_fpr, reg_tpr, reg_auc = modeller.model(features[idx], predict, reg)
-    ax.plot(reg_fpr, reg_tpr, label="reg AUC: {0:.2f}".format(reg_auc))
 
 
     gnb_fpr, gnb_tpr, gnb_auc = modeller.model(features[idx], predict, gnb)
