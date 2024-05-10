@@ -1,0 +1,36 @@
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='input.css') }}" />
+        <title>Input your data</title>
+    </head>
+    <body>
+        <h1>Edit your sensors</h1>
+        <div class="parent">
+            <div class="child inline-block-child">
+                <form action="" method="post" name="teamform">
+                    {{ title }}<br>
+                    <div>
+                        <table>
+                            <tr>
+                                <th> Measurements </th>
+                                <th> Value </th>
+                            </tr>
+                            {% for member in measurements %}
+                            <tr>
+                                <td>{{ member[0] }}</td>
+                                <td><input type="text" value="{{ member[1] }}" name="{{ member[0] }}"></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <p><input type="submit" name="edit" value="Send"></p>
+                </form>
+            </div>
+
+            <div class="child inline-block-child">
+                <p>A diagram of labels will be here</p>
+            </div>
+        </div>
+    </body>
+</html>
