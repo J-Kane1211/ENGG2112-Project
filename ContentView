@@ -1,0 +1,164 @@
+//
+//  ContentView.swift
+//  ENGG App
+//
+//  Created by Alfie Eagleton on 12/5/2024.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    
+    var body: some View {
+        ZStack {
+            Color.heart.edgesIgnoringSafeArea(.all)
+            
+            VStack() {
+                Image("Heart Logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .clipped()
+                
+                HStack {
+                    Text("GP results")
+                        .padding()
+                        .background(Color.heart2)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    
+                    Text("View")
+                        .padding()
+                        .background(.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                
+                HStack {
+                    Text("Smartwatch Results")
+                        .padding()
+                        .background(Color.heart2)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    
+                    Text("View")
+                        .padding()
+                        .background(.gray)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                    
+                }
+                
+                Spacer()
+                
+                VStack(alignment: .leading){
+                    Text("Initialisation Questions:")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    
+                    HStack {
+                        Text("How old are you?")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    HStack {
+                        Text("How much do you smoke?")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    HStack {
+                        Text("How tall are you?")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    HStack {
+                        Text("How much do you weigh?")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding()
+                
+                Spacer()
+                
+                VStack(alignment: .leading){
+                    Text("Daily Questions:")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    
+                    HStack {
+                        Text("How sever is your chest pain?")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    HStack {
+                        Text("What was your level of exercise today?")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    HStack {
+                        Text("Did you experience exercised induced angina")
+                            .foregroundColor(.white)
+                        Text("Select")
+                            .padding(5)
+                            .background(.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding(.leading)
+            
+                Spacer()
+                
+                HStack {
+                    Image(systemName: "bell.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        .clipped()
+                        .foregroundColor(.heart2)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "sos.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50, height: 50)
+                        .clipped()
+                        .foregroundColor(.heart2)
+                }
+                
+            
+            }
+            .padding()
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
