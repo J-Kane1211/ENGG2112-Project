@@ -23,3 +23,22 @@ def convert_features(df):
                 axis=1
             )
     return res
+
+
+#same as above, but don't recreate encoder
+def convert_features_prod(df, old_df):
+    res = pd.DataFrame()
+    enc = OneHotEncoder(drop='first')
+    for label in df.columns:
+        if df[label].dtype not in ('string', 'category', 'object'):
+            res[label] = df[label] #normal add
+        else:
+            #use one hot encoding for categories and the like
+            #get k-1 labels
+            new = pd.DataFrame(enc.fit(old_df[[label]]).transform(df[[label]]).toarray(), columns = enc.get_feature_names_out([label]))
+            res = pd.concat([
+                res,
+                new],
+                axis=1
+            )
+    return res

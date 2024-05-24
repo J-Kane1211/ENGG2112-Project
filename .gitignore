@@ -4,3 +4,8 @@ __pycache__
 *.png
 .vscode
 server/__pycache__
+Lib
+Scripts
+share
+Include
+pyvenv.cfg
